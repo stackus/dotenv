@@ -1,6 +1,6 @@
 # dotenv
 
-Yet another Go port of [dotenv](https://github.com/bkeeper/dotenv) environment variable dot-file library.
+Yet another Go port of [dotenv](https://github.com/bkeepers/dotenv) environment variable dot-file library.
 
 ## Installation
 
