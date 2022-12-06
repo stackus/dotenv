@@ -55,7 +55,7 @@ If you do not want to alter the environment variables you can use `Parse()` to r
 
 values, err := dotenv.Parse()
 
-s3Bucket := values['S3_BUCKET']
+s3Bucket := values["S3_BUCKET"]
 
 // ...
 ```
@@ -113,7 +113,7 @@ err := dotenv.Load(
 // the same goes for Parse()
 ```
 
-### Autoload
+## Autoload
 There is an autoload as well if you do not need to make use of any of the options.
 
 ```go
@@ -128,6 +128,28 @@ func main() {
 }
 
 ```
+
+## CLI
+You can also use this library in the CLI to execute applications with modified environments.
+
+### Installation
+
+```shell
+go install github.com/stackus/dotenv/cmd/dotenv@latest
+```
+
+### Usage
+Prefix the command with a call to dotenv first along with some arguments to load the file or files you need, such as:
+
+```shell
+dotenv -f .env -f .other-env -- your-command -a your-args
+```
+
+In the above example `dotenv` was used to load values into the environment from two different files, then the command `your-command` and its arguments followed a split, identified as `--`. 
+
+Use `--` to signal when the `dotenv` flag parser should stop. Everything to the right of it will be left unparsed and used as the command that will be run along with any arguments that may also exist.
+
+The `dotenv` command will also accept the `-e` flag to set the environment which works like the `EnvironmentFiles(env)` option above, as well as the `-p` flag to provide one or more paths. `-p` may be repeated just like `-f`.
 
 ### Similarities with the Ruby version
 
